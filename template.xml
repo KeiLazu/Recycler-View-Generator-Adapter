@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<template
+	format="5"
+	revision="1"
+	name="Recycler View Adapter"
+	description="Creates generic adapter for recycler view"
+	minApi="19"
+	minBuildApi="19"
+	>
+	
+	<category value="Recycler View"/>
+	
+	<parameter
+		id="adapterName"
+		name="Adapter Name"
+		type="string"
+		constraints="class|nonempty|unique"
+		default="Basic"
+		help="The name of the adapter class for recycler view to create, do not put 'adapter', those adapter will be put automatically within the system"
+	/>
+	
+	<parameter
+		id="viewHolderName"
+		name="View Holder Name"
+		type="string"
+		constraints="class|nonempty|unique"
+		default="BasicViewHolder"
+		suggest="${adapterName}ViewHolder"
+		help="The name of view holder to be linked with adapter. must include 'ViewHolder' in the prefix of the name. this view holder will not be put automatically within the system"
+	/>
+	
+	<parameter
+		id="includeHeader"
+		name="Include Header"
+		type="boolean"
+		default="false"
+		help="Generate adapter with header recycler view set"
+	/>
+	
+	<parameter
+		id="headerViewHolderName"
+		name="View Holder Header Name"
+		type="string"
+		constraints="class|nonempty|unique"
+		default="BasicHeaderViewHolder"
+		suggest="${adapterName}HeaderViewHolder"
+		visibility="includeHeader"
+		help="The name of header view holder to be linked with adapter. must include 'HeaderViewHolder' in the prefix of the name. this header view holder will not be put automatically within the system"
+	/>
+	
+	<parameter
+		id="includeFooter"
+		name="Include Footer"
+		type="boolean"
+		default="false"
+		help="Generate adapter with footer recycler view set"
+	/>
+	
+	<parameter
+		id="footerViewHolderName"
+		name="View Holder Footer Name"
+		type="string"
+		constraints="class|nonempty|unique"
+		default="BasicFooterViewHolder"
+		suggest="${adapterName}FooterViewHolder"
+		visibility="includeFooter"
+		help="The name of footer view holder to be linked with adapter. must include 'FooterViewHolder' in the prefix of the name. this footer view holder will not be put automatically within the system"
+	/>
+	
+	<parameter 
+		id="layoutName"
+		name="Layout Name"
+		type="string"
+		constraints="layout|nonempty|unique"
+		default="list_item_basic"
+		suggest="list_item_${classToResource(adapterName)}"
+		help="The name of the layout to create"
+	/>
+	
+	<parameter
+		id="layoutHeaderName"
+		name="Layout Header Name"
+		type="string"
+		constraints="layout|nonempty|unique"
+		default="list_item_header_basic"
+		visibility="includeHeader"
+		suggest="list_item_header_${classToResource(adapterName)}"
+		help="The name of the header layout to create"
+	/>
+	
+	<parameter
+		id="layoutFooterName"
+		name="Layout Footer Name"
+		type="string"
+		constraints="layout|nonempty|unique"
+		default="list_item_footer_basic"
+		visibility="includeFooter"
+		suggest="list_item_footer_${classToResource(adapterName)}"
+		help="The name of the footer layout to create"
+	/>
+	
+	<parameter
+		id="packageName"
+		name="Package Name"
+		type="string"
+		default="com.mydomain.myapp"
+	/>
+	
+	<globals file="globals.xml.ftl" />
+	<execute file="recipe.xml.ftl"/>
+	
+</template>
